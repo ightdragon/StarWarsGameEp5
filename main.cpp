@@ -1,7 +1,7 @@
 #include <iostream>
 #include<string.h>
 #include<stdlib.h>
-#define GAME 1000
+#define GAME 1500
 
 using namespace std;
 
@@ -12,11 +12,11 @@ class Game
             int jedihealth = GAME;
             int vaderhealth = GAME;
             int troops = (GAME/2);
-            int crew = (GAME-600);
+            int crew = (GAME-550);
             int shiphealth = (GAME/10);
-            int vadershiphealth = (GAME-910);
-            int jedifrihealth = (GAME-850);
-            int myspower = (GAME/100);
+            int vadershiphealth = (GAME-900);
+            int jedifrihealth = (GAME-860);
+            int myspower = (GAME/200);
 
             virtual void victory(){}
             virtual void usetheforce(){}
@@ -43,6 +43,12 @@ class Jedi : public Game
         {
             myspower = myspower + 20;
             shiphealth = shiphealth + 20;
+        }
+    
+        void makememeofit(){
+            myspower = myspower + 30;
+            vaderhealth = (vaderhealth/3);
+            jedifrihealth -= (GAME-950);
         }
 
         void victory()
@@ -73,7 +79,7 @@ class DarthVader : public Game
         {
             jedihealth = (jedihealth/2);
         }
-
+        
         void victory()
         {
             cout<<"\n(heavy breathing)...Yess...I have won it. I will deploy more droids across the universe and gain more control! This mission would not have been possible without me!"<<endl;
@@ -138,14 +144,14 @@ Base b;
     cout<<"\nLuke Skywalker goes to rescue his friends from Darth Vader who is actually his father! "<<endl;
     cout<<"Since Luke is a skywalker, he decides to fight the Dark Emperor!"<<endl;
 
-    cout<<"psst...this is a 2-player game, so decide who you want to be. Jedi gets to play first!"<<endl;
+    cout<<"This is a 2-player game, so decide who you want to be. Jedi gets to play first!"<<endl;
 
     cout<<"\t\t*******May the Force be with you!!******"<<endl;
 
 while((d.jedihealth>0 || s.shiphealth < 1) && (j.vaderhealth>0 || b.vadershiphealth < 1))
 {
 
-cout<<"\n\n1.Use your gun!\t2.Use the lightsaber\t3.Use the force\t4.Get support from the base\t5.Predict\n";
+cout<<"\n\n1.Use your gun!\t2.Use the lightsaber\t3.Use the force\t4.Get support from the base\t5.Make meme of it\t6.Predict\n";
 cout<<"Luke! Choose your weapon!: ";
 int luke;
 cin>>luke;
@@ -160,7 +166,9 @@ cin>>luke;
                     break;
         case 4: b.shootenemy();
                 break;
-        case 5:
+        case 5: j.makememeofit();
+                break;
+        case 6:
         default: if(d.jedihealth > j.vaderhealth)
                     cout<<"\n****Jedi eventually will win!****"<<endl;
                   else
@@ -273,7 +281,7 @@ cin>>luke;
 
        // system("PAUSE");
        ask:
-        cout<<"\n\nDo You want to continue playing? (Y/N): "<<endl;
+        cout<<"\n\nDo You want to continue playing? (Y): "<<endl;
         char c;
         cin>>c;
         if(c == 'Y' || c == 'y')
