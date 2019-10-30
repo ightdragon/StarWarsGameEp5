@@ -2,7 +2,7 @@
 
 The game is written in C++
 
-Its a terminal based game, no graphics as such.
+Its a terminal based game, no graphics.
 
 A basic C++ compilation on any terminal will run the game.
 
