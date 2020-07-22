@@ -8,4 +8,4 @@ A basic C++ compilation on any terminal will run the game.
 
 main() function starts from line 121
 
-It's open source. So your welcome to add features! Go ahead
+It's open source. So you're welcome to add features! Go ahead
