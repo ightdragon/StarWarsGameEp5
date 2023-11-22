@@ -7,7 +7,6 @@ using namespace std;
 
 class Game
 {
-
     public:
             int jedihealth = GAME;
             int vaderhealth = GAME;
@@ -20,113 +19,83 @@ class Game
 
             virtual void victory(){}
             virtual void usetheforce(){}
-    //        virtual int endgame();
-
+    //        virtual int endgame()
 };
 
 class Jedi : public Game
 {
     public:
-
         void shootgun()
         {
             vaderhealth = (vaderhealth-(GAME/2))+troops;
             myspower = myspower + (GAME/10);
         }
-
         void usebluesaber()
         {
             vaderhealth = (vaderhealth/2);
         }
-
         void usetheforce()
         {
             myspower = myspower + 20;
             shiphealth = shiphealth + 20;
         }
-    
         void makememeofit(){
             myspower = myspower + 30;
             vaderhealth = (vaderhealth/3);
             jedifrihealth -= (GAME-950);
         }
-
         void victory()
         {
             cout<<"\nLuke Skywalker: There should be balance in the universe! I am happy that it was possible to deafeat the Imperial fleet and bring peace to the universe!"<<endl;
             cout<<"\nI thank all the crew members and the base for all the support! Its always a team work!"<<endl;
-
-
         }
-
-
-
 };
-
 
 
 class DarthVader : public Game
 {
     public:
-
         void usetheforce()
         {
             jedihealth = jedihealth - (GAME/550);
             jedifrihealth = jedifrihealth - (GAME-950);
         }
-
         void useredsaber()
         {
             jedihealth = (jedihealth/2);
         }
-        
         void victory()
         {
             cout<<"\n(heavy breathing)...Yess...I have won it. I will deploy more droids across the universe and gain more control! This mission would not have been possible without me!"<<endl;
-
-
         }
-
-
 };
 
 class Stormtrooper : public Game
 {
     public:
-
     void attackBase()
     {
         shiphealth = shiphealth - 20;
         crew = crew - 30;
     }
-
-
 };
 
 class Base : public Game
 {
-
     public:
-
-
     void shutdownpower()
     {
         shiphealth = shiphealth + 10;
     }
-
     void shootenemy()
     {
         vadershiphealth = vadershiphealth - 20;
         troops = troops - (GAME/10);
     }
-
-
 };
-
 
 int main()
 {
-
 Jedi j;
 Game *p;
 DarthVader d;
@@ -150,7 +119,6 @@ Base b;
 
 while((d.jedihealth>0 || s.shiphealth < 1) && (j.vaderhealth>0 || b.vadershiphealth < 1))
 {
-
 cout<<"\n\n1.Use your gun!\t2.Use the lightsaber\t3.Use the force\t4.Get support from the base\t5.Make meme of it\t6.Predict\n";
 cout<<"Luke! Choose your weapon!: ";
 int luke;
@@ -173,10 +141,8 @@ cin>>luke;
                     cout<<"\n****Jedi eventually will win!****"<<endl;
                   else
                     cout<<"\n****Darth vader will eventually win!****"<<endl;
-
                 return 0;
                 break;
-
     }
 
 
@@ -189,7 +155,6 @@ cin>>luke;
             case 1: d.usetheforce();
                     j.vaderhealth = (j.vaderhealth - j.myspower);
                     j.myspower = j.myspower - (d.jedifrihealth/2);
-
                     break;
             case 2: d.useredsaber();
                     break;
@@ -201,11 +166,9 @@ cin>>luke;
                         cout<<"\n****Darth eventually will win!****"<<endl;
                     else
                         cout<<"\n****Jedi vader will eventually win****"<<endl;
-
                     return 0;
                     break;
         }
-
             cout<<"\n\n";
 
     if(d.jedihealth < 1)
@@ -213,21 +176,17 @@ cin>>luke;
     else
         cout<<"\nJedi's health: "<<d.jedihealth;
 
-
         if(j.vaderhealth < 1)
             cout<<"\t\tDarth Vader health: :X"<<endl;
         else
             cout<<"\t\tDarth Vader health: "<<j.vaderhealth<<endl;
-
-
-
+    
     if(s.shiphealth < 1 )
     {
      cout<<"\nShip health:**BOOM**";
         cout<<"\nJedi friends health: :X";
         cout<<"\ncCrew on board: :X";
     }
-
     else
     {
     cout<<"\nShip health: "<<s.shiphealth;
@@ -240,10 +199,7 @@ cin>>luke;
         else
             cout<<"\nCrew on board: "<<s.crew;
     }
-
-
-
-
+    
             if(b.vadershiphealth < 1)
             {
              cout<<"\t\tVader ship health:**BOOM*"<<endl;
@@ -255,8 +211,6 @@ cin>>luke;
              cout<<"\t\t\t\t\tTroops: "<<b.troops<<endl;
             }
     cout<<"Jedi Mystery Power: "<<j.myspower;
-
-
 
     if(d.jedihealth < 1 || s.shiphealth < 1)
     {
@@ -273,12 +227,8 @@ cin>>luke;
         p = &j;
         p->victory();
         goto ask;
-
     }
-
 }
-
-
        // system("PAUSE");
        ask:
         cout<<"\n\nDo You want to continue playing? (Y): "<<endl;
@@ -288,11 +238,6 @@ cin>>luke;
             return main();
         else
             return 0;
-
-
-
-
-
 }
 
 
